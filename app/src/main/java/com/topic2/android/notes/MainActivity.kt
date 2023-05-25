@@ -10,6 +10,7 @@ import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.rememberCoroutineScope
 import com.topic2.android.notes.routing.Screen
+import ui.components.screens.NotesScreen
 import com.topic2.android.notes.theme.NotesTheme
 import ui.components.Note
 import com.topic2.android.notes.viewmodel.MainViewModel

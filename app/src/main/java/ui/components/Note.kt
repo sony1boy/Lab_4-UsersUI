@@ -2,6 +2,7 @@ package ui.components
 
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Checkbox
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.topic2.android.notes.R
 import com.topic2.android.notes.domain.model.NoteModel
 import com.topic2.android.notes.theme.rwGreen
+import com.topic2.android.notes.util.fromHex
 
 @Composable
 fun Note(
@@ -36,6 +38,7 @@ fun Note(
             .fillMaxWidth()
             .heightIn(min = 64.dp)
             .background(Color.White, backgroundShape)
+            .clickable(onClick = {onNoteClick(note) } )
     ) {
         NoteColor(
             modifier = Modifier
@@ -43,7 +46,7 @@ fun Note(
                 .background(rwGreen)
                 .align(Alignment.CenterVertically)
                 .padding(start = 16.dp, end = 16.dp),
-            color = rwGreen ,
+            color = Color.fromHex(note.color.hex),
             size = 40.dp,
             border = 1.dp
         )
@@ -64,7 +67,7 @@ fun Note(
                     )
                 )
                 Text(
-                    text = stringResource(id = R.string.content),
+                    text = note.content,
                     color = Color.Black.copy(alpha = 0.75f),
                     maxLines = 1,
                     style = TextStyle(
@@ -74,9 +77,9 @@ fun Note(
                     )
                 )
             }
-            note.isCheckedOff?.let {
+            if (note.isCheckedOff != null){
                 Checkbox(
-                    checked = it,
+                    checked = note.isCheckedOff,
                     onCheckedChange = { isChecked ->
                         val newNote = note.copy(isCheckedOff = isChecked)
                         onNoteCheckedChange(newNote)
@@ -91,9 +94,13 @@ fun Note(
 
 @Preview
 @Composable
-fun NotePreview() {
-    Note()
+private fun NotePreview(){
+    Note(
+        note = NoteModel(
+            1,
+            "Заметка 1",
+            "Содержание 1",
+            null
+        )
+    )
 }
-    fun Note() {
-        TODO("Not yet implemented")
-    }
