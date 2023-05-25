@@ -17,6 +17,7 @@ import com.topic2.android.notes.viewmodel.MainViewModelFactory
 import kotlinx.coroutines.launch
 import ui.components.AppDrawer
 import ui.components.Note
+import ui.components.screens.NotesScreen
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,31 +30,12 @@ class MainActivity : AppCompatActivity() {
   })
 
 
-  @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     setContent {
       NotesTheme {
-        val coroutineScope = rememberCoroutineScope()
-        val scaffoldState: ScaffoldState = rememberScaffoldState()
-
-        Scaffold(
-          scaffoldState = scaffoldState,
-          drawerContent = {
-            AppDrawer(
-              currentScreen = Screen.Notes,
-              closeDrawerAction = {
-                coroutineScope.launch {
-                  scaffoldState.drawerState.close()
-                }
-              }
-            )
-          },
-          content = {
-            Note()
-          }
-        )
+        NotesScreen(viewModel = viewModel)
       }
     }
   }

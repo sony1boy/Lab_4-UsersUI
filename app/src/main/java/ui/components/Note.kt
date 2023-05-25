@@ -48,35 +48,35 @@ fun Note(){
                     .weight(1f)
                     .align(Alignment.CenterVertically)
             ) {
-            Text(
-                text = stringResource(id = R.string.header),
-                        color = Color.Black,
-                maxLines = 1,
-                style = TextStyle(
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 16.sp,
-                    letterSpacing = 0.15.sp
+                Text(
+                    text = stringResource(id = R.string.header),
+                    color = Color.Black,
+                    maxLines = 1,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 16.sp,
+                        letterSpacing = 0.15.sp
+                    )
                 )
-            )
-            Text(
-                text = stringResource(id = R.string.content),
-                        color = Color.Black.copy(alpha = 0.75f),
-                maxLines = 1,
-                style = TextStyle(
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 14.sp,
-                    letterSpacing = 0.25.sp
+                Text(
+                    text = stringResource(id = R.string.content),
+                    color = Color.Black.copy(alpha = 0.75f),
+                    maxLines = 1,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        letterSpacing = 0.25.sp
+                    )
                 )
+            }
+            Checkbox(
+                checked = false,
+                onCheckedChange = { },
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .align(Alignment.CenterVertically)
             )
         }
-        Checkbox(
-            checked = false,
-            onCheckedChange = { },
-            modifier = Modifier
-                .padding(start = 8.dp)
-                .align(Alignment.CenterVertically)
-        )
-    }
 }
 
 @Preview
